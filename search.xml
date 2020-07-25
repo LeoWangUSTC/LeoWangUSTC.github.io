@@ -11,7 +11,7 @@
 <h2 id="创建ROS消息和服务"><a href="#创建ROS消息和服务" class="headerlink" title="创建ROS消息和服务"></a>创建ROS消息和服务</h2><p>在新增ROS消息和服务以后我们要对Catkin_package.txt进行修改，增加依赖，生成器，调用生成。</p>
 <p>因为好多部分教程都要求找到注释代码，修改以后去掉注释，使代码生效。例如下面这样：<br><img src="https://raw.githubusercontent.com/LeoWangUSTC/picture/master/ROS_Tutorials/%E6%8D%95%E8%8E%B7.PNG" alt="捕获.PNG"></p>
 <p>我又…是图方便，没有查找注释代码，直接将修改代码添加到尾部，当时觉得反正那部分也是注释无效的，结果又开启了找BUG之旅…</p>
-<p>最后发现CMakeList.txt文件必须遵循如下的格式，不然就无法正确地编译：<br>1.查找编译依赖的其他CMake/Catkin包（声明依赖库）：find_package()<br>2.消息/服务/操作(Message/Service/Action)生成器：add_message_files(),add_service_files(),add_action_files()<br>3.调用消息/服务/操作生成：generate_messages()</p>
+<p>最后发现CMakeList.txt文件必须遵循如下的格式，不然就无法正确地编译：<br>1.查找编译依赖的其他CMake/Catkin包（声明依赖库）：find_package()<br>2.添加消息/服务/操作文件：add_message_files(),add_service_files(),add_action_files()<br>3.调用消息/服务/操作生成：generate_messages()</p>
 <h2 id="roswtf使用"><a href="#roswtf使用" class="headerlink" title="roswtf使用"></a>roswtf使用</h2><p>roswtf 可以检查你的ROS系统并尝试发现问题。</p>
 <p>当我运行roswtf时发现系统报错,需要更新rosdep。<br><img src="https://raw.githubusercontent.com/LeoWangUSTC/picture/master/ROS_Tutorials/2020-07-24%2011-00-15%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>
 <p>而当我按照提示运行命令rosdep update时又会发现：<br><img src="https://raw.githubusercontent.com/LeoWangUSTC/picture/master/ROS_Tutorials/2020-07-24%2011-01-04%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt=""></p>

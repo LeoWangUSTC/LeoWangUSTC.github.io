@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ROS_Tutorials</title>
-    <url>/2020/07/25/ROS-Tutorials/</url>
-    <content><![CDATA[<p>本科时候图方便仅仅使用了Windows下的VREP（想想用gazebo还要学Linux和ROS就好麻烦…)，最近由于需要学习了ROS，也算是填上本科时候埋下的坑(&gt;﹏&lt;)。</p>
-<p>本文主要针对<a href="http://wiki.ros.org/cn" target="_blank" rel="noopener">ROS wiki教程</a>踩得雷做一下总结，关于如何学习ROS，可以参考知乎高赞马师兄的回答<a href="https://zhuanlan.zhihu.com/p/26007106" target="_blank" rel="noopener">ROS学习入门（抛砖引玉篇）</a>。</p>
-<p>###ROS安装<br>目前有在维护的版本有Kinetic、Melodic以及Noetic。由于我的Ubuntu版本是20.04，所以选择了Noetic，并且Noetic是最新版本，会维护到2025年。</p>
-<p>在安装Ubuntu系统的时候切记主分区要大于15G，我最开始分了10G结果ROS安一半，它满了！！！弄得我又重装了一遍系统…</p>
-<p>###节点、话题、服务<br>这部分按照教程来做就可以了，注意Hydro版本和非Hydro版本的命令区别。</p>
-<p>###创建ROS消息和服务<br>在新增ROS消息和服务以后我们要对Catkin_package.txt进行修改，增加依赖，生成器，调用生成。</p>
-<p>因为好多部分教程都要求找到注释代码，修改以后去掉注释，使代码生效。例如下面这样：</p>
-<p><img src="F:%5Cmarkdown%E5%9B%BE%E7%89%87%5CROS%E2%80%94%E2%80%94Tutorials.PNG" alt="Alt text"></p>
-<p>我又…是图方便，没有查找注释代码，直接将修改代码添加到尾部，当时觉得反正那部分也是注释无效的，结果又开启了找BUG之旅</p>
-<p>最后发现CMakeList.txt文件必须遵循如下的格式，不然就无法正确地编译：<br>1.查找编译依赖的其他CMake/Catkin包（声明依赖库）：find_package()<br>2.消息/服务/操作(Message/Service/Action)生成器：add_message_files(),add_service_files(),add_action_files()<br>3.调用消息/服务/操作生成：generate_messages()</p>
-]]></content>
-      <categories>
-        <category>ROS</category>
-      </categories>
-      <tags>
-        <tag>ROS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>test</title>
     <url>/2020/07/14/test/</url>
     <content><![CDATA[<p>我是一个测试文件。</p>
@@ -31,6 +10,27 @@
       </categories>
       <tags>
         <tag>test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ROS_Tutorials</title>
+    <url>/2020/07/25/ROS-Tutorials/</url>
+    <content><![CDATA[<p>本科时候图方便仅仅使用了Windows下的VREP（想想用gazebo还要学Linux和ROS就好麻烦…)，最近由于需要学习了ROS，也算是填上本科时候埋下的坑(&gt;﹏&lt;)。</p>
+<p>本文主要针对<a href="http://wiki.ros.org/cn" target="_blank" rel="noopener">ROS wiki教程</a>踩得雷做一下总结，关于如何学习ROS，可以参考知乎高赞马师兄的回答<a href="https://zhuanlan.zhihu.com/p/26007106" target="_blank" rel="noopener">ROS学习入门（抛砖引玉篇）</a>。</p>
+<h2 id="ROS安装"><a href="#ROS安装" class="headerlink" title="ROS安装"></a>ROS安装</h2><p>目前有在维护的版本有Kinetic、Melodic以及Noetic。由于我的Ubuntu版本是20.04，所以选择了Noetic，并且Noetic是最新版本，会维护到2025年。</p>
+<p>在安装Ubuntu系统的时候切记主分区要大于15G，我最开始分了10G结果ROS安一半，它满了！！！弄得我又重装了一遍系统…</p>
+<h2 id="节点、话题、服务"><a href="#节点、话题、服务" class="headerlink" title="节点、话题、服务"></a>节点、话题、服务</h2><p>这部分按照教程来做就可以了，注意Hydro版本和非Hydro版本的命令区别。</p>
+<h2 id="创建ROS消息和服务"><a href="#创建ROS消息和服务" class="headerlink" title="创建ROS消息和服务"></a>创建ROS消息和服务</h2><p>在新增ROS消息和服务以后我们要对Catkin_package.txt进行修改，增加依赖，生成器，调用生成。</p>
+<p>因为好多部分教程都要求找到注释代码，修改以后去掉注释，使代码生效。例如下面这样：</p>
+<p><img src="https://github.com/LeoWangUSTC/picture/blob/master/ROS_Tutorials/%E6%8D%95%E8%8E%B7.PNG" alt="捕获.PNG"></p>
+<p>我又…是图方便，没有查找注释代码，直接将修改代码添加到尾部，当时觉得反正那部分也是注释无效的，结果又开启了找BUG之旅…</p>
+<p>最后发现CMakeList.txt文件必须遵循如下的格式，不然就无法正确地编译：<br>1.查找编译依赖的其他CMake/Catkin包（声明依赖库）：find_package()<br>2.消息/服务/操作(Message/Service/Action)生成器：add_message_files(),add_service_files(),add_action_files()<br>3.调用消息/服务/操作生成：generate_messages()</p>
+]]></content>
+      <categories>
+        <category>ROS</category>
+      </categories>
+      <tags>
+        <tag>ROS</tag>
       </tags>
   </entry>
 </search>

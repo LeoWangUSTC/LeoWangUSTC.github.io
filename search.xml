@@ -28,18 +28,6 @@
       </tags>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/2020/07/14/test/</url>
-    <content><![CDATA[<p>我是一个测试文件。</p>
-]]></content>
-      <categories>
-        <category>test</category>
-      </categories>
-      <tags>
-        <tag>test</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>位运算</title>
     <url>/2020/08/09/%E4%BD%8D%E8%BF%90%E7%AE%97/</url>
     <content><![CDATA[<h1 id="C-位运算基本知识"><a href="#C-位运算基本知识" class="headerlink" title="C++位运算基本知识"></a>C++位运算基本知识</h1><h2 id="与"><a href="#与" class="headerlink" title="与"></a>与</h2><table>
@@ -202,6 +190,18 @@
       <tags>
         <tag>算法</tag>
         <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>test</title>
+    <url>/2020/07/14/test/</url>
+    <content><![CDATA[<p>我是一个测试文件。</p>
+]]></content>
+      <categories>
+        <category>test</category>
+      </categories>
+      <tags>
+        <tag>test</tag>
       </tags>
   </entry>
 </search>

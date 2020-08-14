@@ -298,6 +298,205 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/14/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ning">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Welcome to My Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/14/%E5%89%8D%E7%BC%80%E5%92%8C%E4%B8%8E%E5%B7%AE%E5%88%86/" itemprop="url">前缀和与差分</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-14T08:40:12+08:00">
+                2020-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="前缀和"><a href="#前缀和" class="headerlink" title="前缀和"></a>前缀和</h4><blockquote>
+<p>地图上有 N 个目标，用整数Xi,Yi表示目标在地图上的位置，每个目标都有一个价值Wi。注意：不同目标可能在同一位置。<br>现在有一种新型的激光炸弹，可以摧毁一个包含 R×R 个位置的正方形内的所有目标。激光炸弹的投放是通过卫星定位的，但其有一个缺点，就是其爆炸范围，即那个正方形的边必须和x，y轴平行。<br>求一颗炸弹最多能炸掉地图上总价值为多少的目标。</p>
+</blockquote>
+<p>前缀和的定义就是对于当前数组，第i个数以前的数的总和，形成一个新的数组，即前缀和数组。$sum[i]=\sum_{j=0}^{i}num[i]$<br>以上是一维情况，对于二维数组，我们可以把它看成一个矩形，当前点的前缀和就是所在行以前和所在列以前所有数的总和$sum[i][j]=\sum_{m=0}^{i}\sum_{n=0}^{j}num[i][j]$<br>可以表示成下图的形式，对于黄色框内的前缀和，就是黄色=绿色+红色-蓝色。<br><img src="https://img-blog.csdnimg.cn/20200813092853480.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTY3NjkzMA==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>对于这题，我们就可以用二维前缀和进行快速求解</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="comment">//M是二维数组最大范围</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M=<span class="number">5010</span>;</span><br><span class="line"><span class="comment">//记录二维数组每个点的价值, 初始化为0，记作全局变量，存储在堆空间，防止栈满。</span></span><br><span class="line"><span class="keyword">int</span> g[M][M];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//输入N行，每行输入一组数据，每组数据包括三个整数Xi,Yi,Wi,</span></span><br><span class="line">	<span class="comment">//R表示爆炸范围</span></span><br><span class="line">    <span class="keyword">int</span> N, R;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; R;</span><br><span class="line">    <span class="comment">//n和m用来记录最大边界</span></span><br><span class="line">    <span class="keyword">int</span> n = R, m = R;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>, x, y, w; i&lt;N; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; w;</span><br><span class="line">        <span class="comment">//处理边界，从1开始</span></span><br><span class="line">        x++, y++;</span><br><span class="line">        n=max(n,x), m=max(m,y);</span><br><span class="line">        g[x][y] += w;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//计算前缀和</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=m; j++)</span><br><span class="line">            g[i][j] += g[i<span class="number">-1</span>][j] + g[i][j<span class="number">-1</span>] - g[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//遍历前缀和，求解最大值</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=R; i&lt;=n; i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=R; j&lt;=m; j++)</span><br><span class="line">            res=max(res,g[i][j]-g[i-R][j]-g[i][j-R]+g[i-R][j-R]);</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还可以进一步简化代码，在计算前缀和的同时求解最大值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> M=<span class="number">5010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> g[M][M];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N, R;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; N &gt;&gt; R;</span><br><span class="line">    <span class="keyword">int</span> n = R, m = R;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>, x, y, w; i&lt;N; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; x &gt;&gt; y &gt;&gt; w;</span><br><span class="line">        x++, y++;</span><br><span class="line">        n=max(n,x), m=max(m,y);</span><br><span class="line">        g[x][y] += w;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>; j&lt;=m; j++)&#123;</span><br><span class="line">            g[i][j] += g[i<span class="number">-1</span>][j] + g[i][j<span class="number">-1</span>] - g[i<span class="number">-1</span>][j<span class="number">-1</span>];</span><br><span class="line">            x=max(i-R, <span class="number">0</span>);</span><br><span class="line">            y=max(j-R, <span class="number">0</span>);</span><br><span class="line">            res=max(res,g[i][j]-g[x][j]-g[i][y]+g[x][y]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; res &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h4><p>差分的定义就是，对于给定的数组$num$，第i个数和第i-1的差值所组成的新的数组就是差分数组，$dif[i]=num[i]-num[i-1]$（$dif[0]=num[0]$)。<br>对于差分数组和原数组存在如下关系<br>$num[i]=dif[0]+dif[1]+···+dif[i]<br>            =num[0]+num[1]-num[0]+···+num[i]-num[i-1]$</p>
+<blockquote>
+<p>给定一个长度为 n 的数列 a1,a2,…,an，每次可以选择一个区间 [l,r]，使下标在这个区间内的数都加一或者都减一。<br>求至少需要多少次操作才能使数列中的所有数都一样，并求出在保证最少次数的前提下，最终得到的数列可能有多少种。</p>
+</blockquote>
+<p>利用差分数组，对于某个区间（l, r）内加1，只需$b[l]+=1,b[r]-=1$，这样就可以在$O(1)$时间复杂度更改，而不用遍历（l，r）范围内的数组。<br>借用差分数组，我们只需将差分数组全部变为0，就可以使原数组的数全部相同。而对于可执行的操作，我们可以分成如下4类：</p>
+<ol>
+<li>1&lt;=i，j&lt;=n               该操作是针对i，j范围，必然伴随差分数组某两个数的加1以及减1</li>
+<li>i=0, 1&lt;=j&lt;=n            该操作是针对j以前的所有数，只伴随着差分数组某个数的加1或者减1</li>
+<li>1&lt;=i&lt;=n, j=n+1        该操作是针对i以后的所有数，同上</li>
+<li>i=0, j=n+1                该操作是针对数组全部 差分数组不变</li>
+</ol>
+<p>对于第一种情况一次操作可以更改差分数组的两个数，是我们应该优先选择的，通过加减两个差分数组的数，可以使得数组中的正数和负数相抵消，最后再用第二种和第三种方法对剩余的正数或者负数进行清零。如此满足最少操作的要求。第四种操作没有意义。</p>
+<p>我们需要知道一点，当差分数组正数之和和负数之和相等的时候，利用第一种方式对差分数组清零，无论操作顺序是什么样的，整个数组得到的结果都是一样的，都是和初始数组首末值相等的数组。因此我们可以得出，对于最终数组的可能情况仅仅取决于对剩余正数或者负数的操作。<br>而对于剩余数的操作只有第二种和第三种方式，两种方式的可能组合的方式数，就是最终解。直观一点来看，例如我们最终剩余正数是下图左边所示：<br><img src="https://img-blog.csdnimg.cn/20200813111323564.png#pic_center" alt="在这里插入图片描述"><br>黑线代表了差分数组还有两个正数差值，均是1，因此我们最终通过第2，3种方法，可以使原数组有红黄蓝三种方式使差分数组清零。最终代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;	</span><br><span class="line">	<span class="comment">//接受数组</span></span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">    <span class="comment">//生成差分数组</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=n; i&gt;<span class="number">1</span>; i--) a[i]-=a[i<span class="number">-1</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//计算差分数组正负数总和</span></span><br><span class="line">    LL pos=<span class="number">0</span>, neg=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;=n; i++)</span><br><span class="line">        <span class="keyword">if</span>(a[i]&gt;<span class="number">0</span>) pos+=a[i];</span><br><span class="line">        <span class="keyword">else</span> neg-=a[i];</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; max(pos, neg) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">abs</span>(pos-neg)+<span class="number">1</span> &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>有 N 头牛站成一行，被编队为1、2、3…N，每头牛的身高都为整数。<br>当且仅当两头牛中间的牛身高都比它们矮时，两头牛方可看到对方。<br>现在，我们只知道其中最高的牛是第 P 头，它的身高是 H ，剩余牛的身高未知。<br>但是，我们还知道这群牛之中存在着 M 对关系，每对关系都指明了某两头牛 A 和 B 可以相互看见。<br>求每头牛的身高的最大可能值是多少。</p>
+</blockquote>
+<p>这道题我们可以很明确的知道，数组首位的牛最高值就是H，因为给定的M对关系仅仅是数组内部的关系。所以根据于此，我们可以利用差分数组记录每对关系，在根据首位来确定原数组最理想的形式。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">10010</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> height[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">//n是牛的数量，p是第几头牛最高，h是最高的牛的高度，m是关系数。</span></span><br><span class="line">    <span class="keyword">int</span> n, p, h, m;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; p &gt;&gt; h &gt;&gt; m;</span><br><span class="line">    height[<span class="number">1</span>]=h;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//根据关系，对差分数组的边界进行处理</span></span><br><span class="line">    <span class="built_in">set</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; existed;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>, a, b; i&lt;m; i++)&#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b;</span><br><span class="line">        <span class="keyword">if</span>(a&gt;b) swap(a,b);</span><br><span class="line">        <span class="keyword">if</span>(!existed.count(&#123;a, b&#125;))&#123;</span><br><span class="line">            existed.insert(&#123;a, b&#125;);</span><br><span class="line">            height[a+<span class="number">1</span>]--, height[b]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//根据差分数组，求解原数组</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)&#123;</span><br><span class="line">        height[i] += height[i<span class="number">-1</span>];</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; height[i] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/10/%E9%80%92%E5%BD%92%E4%B8%8E%E9%80%92%E6%8E%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1237,7 +1436,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

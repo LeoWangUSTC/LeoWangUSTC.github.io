@@ -317,7 +317,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/09/25/%E5%88%9D%E6%8E%A2Numpy/" itemprop="url">a</a></h1>
+                <a class="post-title-link" href="/2020/09/25/%E5%88%9D%E6%8E%A2Numpy/" itemprop="url">初探Numpy</a></h1>
         
 
         <div class="post-meta">
@@ -482,7 +482,35 @@
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], dtype=float)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.dtype</span><br><span class="line">dtype(<span class="string">'float'</span>)</span><br></pre></td></tr></table></figure>
 <p>默认数据类型是浮点型</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = np.ones((<span class="number">3</span>, <span class="number">3</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.dtype</span><br><span class="line">dtype(<span class="string">'float'</span>)</span><br></pre></td></tr></table></figure>
-<p>其他的数据类型：<br>|关键字|类型|<br>|–|–|<br>|  complex|复数  |<br>|bool| 布尔|<br>|strings|字符串|<br>|int32<br>int64|整数|<br>|uint32<br>uint64|无符号整数|</p>
+<p>其他的数据类型：</p>
+<table>
+<thead>
+<tr>
+<th align="center">关键字</th>
+<th align="center">类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">complex</td>
+<td align="center">复数</td>
+</tr>
+<tr>
+<td align="center">bool</td>
+<td align="center">布尔</td>
+</tr>
+<tr>
+<td align="center">strings</td>
+<td align="center">字符串</td>
+</tr>
+<tr>
+<td align="center">int32<br>int64</td>
+<td align="center">整数</td>
+</tr>
+<tr>
+<td align="center">uint32<br>uint64</td>
+<td align="center">无符号整数</td>
+</tr>
+</tbody></table>
 <h2 id="可视化-visualization"><a href="#可视化-visualization" class="headerlink" title="可视化(visualization)"></a>可视化(visualization)</h2><p>现在我们有了我们的第一个数据数组，我们要来将 它们可视化。<br>matpotlib是一个2D绘图包，我们可以import它的函数如下：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt  <span class="comment"># the tidy war</span></span><br></pre></td></tr></table></figure>
 <p>接下来使用</p>
